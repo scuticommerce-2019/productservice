@@ -1,8 +1,9 @@
 package com.scuticommerce.product;
 
-import com.scuticommerce.product.model.Product;
 import com.scuticommerce.product.repository.ProductRepository;
 import com.scuticommerce.product.service.ProductService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/product/")
 public class ProductController {
+
+    Logger logger = LogManager.getRootLogger();
 
    @Autowired
     ProductRepository repository;
@@ -21,6 +24,7 @@ public class ProductController {
    @GetMapping("/up")
    public ResponseEntity<?> active(){
 
+       logger.info("Site is up");
        return new ResponseEntity<>("service is up", HttpStatus.OK);
     }
 

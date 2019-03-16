@@ -10,6 +10,8 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.net.URL;
@@ -18,6 +20,7 @@ import java.util.List;
 @Component
 public class ProductImageUtil {
 
+    Logger logger = LogManager.getRootLogger();
     private static final String BUCKET_NAME = "product-images-scuti";
 
     public static AmazonS3 s3client;

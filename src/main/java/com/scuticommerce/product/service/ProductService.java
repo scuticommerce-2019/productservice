@@ -1,6 +1,6 @@
 package com.scuticommerce.product.service;
 
-import com.scuticommerce.product.model.Product;
+import com.scuticommerce.model.product.Product;
 import com.scuticommerce.product.repository.ProductRepository;
 import com.scuticommerce.product.util.ProductImageUtil;
 import org.springframework.beans.factory.annotation.Autowired;

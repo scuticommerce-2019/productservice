@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: productservice
+  cloud:
+      config:
+        uri: http://localhost:8090
+management:
+        security:
+          enabled: false
+name: Product Service version 1.0
+server:
+  port: 21909
