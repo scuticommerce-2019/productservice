@@ -25,7 +25,7 @@ public class ProductImageUtil {
     @Autowired
     public void ProductImageUtil() {
 
-        String awskey =  System.getenv("awskey");
+        String awskey =  "badkey";//System.getenv("awskey");
         String secret = "/LzA6sS/MaTOXIJKKPLmLA9Dg+0NLGLNPEYCe7oT";//System.getenv("secret");
 
         System.out.println(awskey);
