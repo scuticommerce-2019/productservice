@@ -1,5 +1,6 @@
 package com.scuticommerce.product;
 
+import com.scuticommerce.model.product.Product;
 import com.scuticommerce.product.repository.ProductRepository;
 import com.scuticommerce.product.service.ProductService;
 import org.apache.logging.log4j.LogManager;
@@ -9,8 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
-@RequestMapping("/api/product/")
+@RequestMapping("/api/productservice")
 public class ProductController {
 
     Logger logger = LogManager.getRootLogger();
@@ -21,11 +25,11 @@ public class ProductController {
    @Autowired
     ProductService service;
 
-   @GetMapping("/up")
+   @GetMapping("/status")
    public ResponseEntity<?> active(){
 
        logger.info("Site is up");
-       return new ResponseEntity<>("service is up", HttpStatus.OK);
+       return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @GetMapping("/products")
@@ -35,10 +39,20 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(){
+    public ResponseEntity<?> create(@RequestBody List<Product> products ){
 
-       service.createProduct(false);
+       for (Product product : products) {
+           service.createProduct(product,false);
+       }
 
        return new ResponseEntity<>(true,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> delete(){
+
+       repository.deleteAll();
+
+       return new ResponseEntity<>( HttpStatus.OK);
     }
 }
